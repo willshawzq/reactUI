@@ -1,0 +1,70 @@
+.clearfix::after {
+	display: block;
+	content: "";
+	clear: both;
+}
+.middle {
+	position: relative;
+	top: 50%; left: 50%;
+	display: block;
+	transform: translate(-50%);
+}
+@mixin circle($size: 10px, $color: #fff) {
+	display: inline-block;
+	width: $size; height: $size;
+	border-radius: 50%;
+	background-color: $color;
+}
+@mixin circle-close($size: 10px, $bgColor: #fff, $fgColor: #000) {
+	@include circle($size, $color: $bgColor);
+	display: inline-table;
+	&::after {
+		display: table-cell;
+		content: "X"; color: $fgColor; 
+		text-align: center;
+	}
+}
+
+@mixin triangle($size:24px, $color:#000, $direction:up, $trim:false, $transparent:false) {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border: solid $size;
+  @if $direction == up {
+    border-color: transparent transparent $color transparent !important;
+    @if $transparent {
+      border-color: $color $color transparent $color !important;
+    }
+    @if $trim {
+      border-top-width: 0;
+    }
+  }
+  @if $direction == right {
+    border-color: transparent transparent transparent $color !important;
+    @if $transparent {
+      border-color: $color $color $color transparent !important;
+    }
+    @if $trim {
+      border-right-width: 0;
+    }
+  }
+  @if $direction == down {
+    border-color: $color transparent transparent transparent !important;
+    @if $transparent {
+      border-color: transparent $color $color $color !important;
+    }
+    @if $trim {
+      border-bottom-width: 0;
+    }
+  }
+  @if $direction == left {
+    border-color: transparent $color transparent transparent !important;
+    @if $transparent {
+      border-color: $color transparent $color $color !important;
+    }
+    @if $trim {
+      border-left-width: 0;
+    }
+  }
+}
