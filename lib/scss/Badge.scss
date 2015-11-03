@@ -1,0 +1,35 @@
+.react-badge {
+	position: relative;
+	display: inline-block;
+	line-height: 1;
+}
+%badge-inner {
+	position: absolute;
+	z-index: 9;
+	color: #fff;
+	background-color: #f60;
+	box-shadow: 0 0 0 1px #fff;
+	transform: translateX(-50%);
+	transition: all .3s ease;
+}
+.react-badge-count {
+	@extend %badge-inner;
+	top: -10px;
+	left: 100%;
+	min-width: 20px;
+	height: 20px;
+	line-height: 20px;
+	padding: 0 7px;
+	border-radius: 10px;
+	font-size: 12px;
+	text-align: center;
+	font-size: 12px;
+	white-space: nowrap;
+}
+.react-badge-dot {
+	@extend %badge-inner;
+	top: -4px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+}
