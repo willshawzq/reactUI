@@ -1,0 +1,77 @@
+.react-tag {
+	display: inline-block;
+	height: 22px;
+	line-height: 22px;
+	margin: 0 4px 8px 0;
+	padding: 0 8px;
+	border-radius: 11px;
+	color: #666;
+	font-size: 12px;
+	vertical-align: middle;
+	opacity: .85;
+	overflow: hidden;
+	background-color: #f3f3f3;
+	transition: all .3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+	&:hover {
+		opacity: 1;
+	}
+	a {
+		color: #666;
+		&:hover {
+			color: #666;
+		}
+	}
+	.anticon-cross {
+		position: relative;
+		display: inline-block;
+		margin-left: 3px;
+		zoom: 1;
+		color: #666;
+        font-size: 12px;
+		font-weight: bold;
+		cursor: pointer;
+		opacity: .66;
+		transition: all .3s ease;
+		transform: scale(0.83333333) rotate(0deg);
+		filter: progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=1, M12=0, M21=0, M22=1);
+		:hover {
+			opacity: 1;
+		}
+	}
+}
+.react-tag-close {
+	width: 0;
+	padding: 0;
+	margin-right: 0;
+}
+:root .react-tag .anticon-cross {
+  -webkit-filter: none;
+          filter: none;
+}
+$tagColor: (
+	blue: #2db7f5,
+	green: #87d068,
+	yellow: #fac450,
+	red: #f60
+);
+%tagFontColor{
+	color: #fff;	
+};
+@each $el in map-keys($tagColor) {
+	.react-tag-#{$el} {
+		@extend %tagFontColor;
+		background-color: map-get($tagColor, $el);
+		a {
+			@extend %tagFontColor;
+			&:hover {
+				@extend %tagFontColor;
+			}
+		}
+		.anticon-cross {
+			@extend %tagFontColor;
+			&:hover {
+				@extend %tagFontColor;
+			}
+		}
+	}
+}
